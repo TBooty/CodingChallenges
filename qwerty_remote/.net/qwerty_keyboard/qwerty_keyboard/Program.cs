@@ -13,7 +13,7 @@ namespace qwerty_keyboard_challenge
             qwertyKeyboard[0] = new string[] { "q", "w", "e", "r", "t", "y", "u", "i", "o", "p" };
             qwertyKeyboard[1] = new string[] { "a", "s", "d", "f", "g", "h", "j", "k", "l" };
             qwertyKeyboard[2] = new string[] { "z", "x", "c", "v", "b", "n", "m" };
-            WordFinder("car", qwertyKeyboard);
+            WordFinder("thomas", qwertyKeyboard);
             
         }
 

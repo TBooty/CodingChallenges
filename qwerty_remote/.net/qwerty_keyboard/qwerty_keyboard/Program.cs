@@ -13,7 +13,7 @@ namespace qwerty_keyboard_challenge
             qwertyKeyboard[0] = new string[] { "q", "w", "e", "r", "t", "y", "u", "i", "o", "p" };
             qwertyKeyboard[1] = new string[] { "a", "s", "d", "f", "g", "h", "j", "k", "l" };
             qwertyKeyboard[2] = new string[] { "z", "x", "c", "v", "b", "n", "m" };
-            WordFinder("thomas", qwertyKeyboard);
+            WordFinder("car", qwertyKeyboard);
             
         }
 
@@ -44,7 +44,6 @@ namespace qwerty_keyboard_challenge
                 builder.Append(direction_vert);
                 builder.Append(direction_hori);
                 builder.Append("select ");
-                Console.WriteLine(builder.ToString());
                 prev_cord = new(cord_x, cord_y);
             }
             var result = builder.ToString();

@@ -30,36 +30,22 @@ namespace qwerty_keyboard_challenge
                     seenValues.Add(letter, new Tuple<int, int>(row, col));
                 }
             }
-            Tuple<int, int> prev_cord = new(-99,-99);
+            Tuple<int, int> prev_cord = new(0,0);
             for (int i = 0; i < word.Length; i++)
             {
                 var letter = word[i].ToString();
                 var coordinates = seenValues[letter];
                 var cord_x = coordinates.Item1;
                 var cord_y = coordinates.Item2;
-                //first item
-                if(prev_cord.Item1 == -99 && prev_cord.Item2 == -99)
-                {
-                    prev_cord = new(cord_x, cord_y);
-                    string direction_vert = string.Concat(Enumerable.Repeat(cord_x >= 0 ? "down " : "up ", cord_x));
-                    string direction_hori = string.Concat(Enumerable.Repeat(cord_x >= 0 ? "right " : "left ", cord_y));
-                    builder.Append(direction_vert);
-                    builder.Append(direction_hori);
-                    builder.Append("select ");
-                }
-                else
-                {
-                    var difference_x = cord_x - prev_cord.Item1;
-                    var difference_y = cord_y - prev_cord.Item2;
-                    string direction_vert = string.Concat(Enumerable.Repeat(difference_x >= 0 ? "down " : "up ", difference_x < 0 ? difference_x * -1 : difference_x));
-                    string direction_hori = string.Concat(Enumerable.Repeat(difference_y >= 0 ? "right " : "left ", difference_y < 0 ? difference_y * -1 : difference_y));
-                    builder.Append(direction_vert);
-                    builder.Append(direction_hori);
-                    builder.Append("select ");
-                    Console.WriteLine(builder.ToString());
-                    prev_cord = new(cord_x, cord_y);
-                    //second letter
-                }
+                var difference_x = cord_x - prev_cord.Item1;
+                var difference_y = cord_y - prev_cord.Item2;
+                string direction_vert = string.Concat(Enumerable.Repeat(difference_x >= 0 ? "down " : "up ", difference_x < 0 ? difference_x * -1 : difference_x));
+                string direction_hori = string.Concat(Enumerable.Repeat(difference_y >= 0 ? "right " : "left ", difference_y < 0 ? difference_y * -1 : difference_y));
+                builder.Append(direction_vert);
+                builder.Append(direction_hori);
+                builder.Append("select ");
+                Console.WriteLine(builder.ToString());
+                prev_cord = new(cord_x, cord_y);
             }
             var result = builder.ToString();
             Console.WriteLine(result);
